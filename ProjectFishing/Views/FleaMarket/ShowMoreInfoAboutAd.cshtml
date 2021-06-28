@@ -9,6 +9,21 @@
             $scope.ImagesList;
             $scope.IdAd = idViewBag;
             var activeUser = "m";
+             $scope.Close = function (PostId) {
+                console.log(PostId);
+                $http({
+                    method: 'POST',
+                    url: '/FleaMarket/CloseAd/' + PostId,
+
+
+
+                })
+                    .then(function succes(responce) {
+                      
+                        console.log("dfdfd");
+                      
+                    });
+            }
             $http({
                 method: 'GET',
                 url: '/FleaMarket/GetAdById/'+$scope.IdAd,
@@ -87,11 +102,12 @@
                     </div>
                     <hr />
                     <div>
+
                         <h3>Описание: {{AdModel.Description}}</h3>
                     </div>
                     <div class="entry-title ">
 
-                      
+
 
                     </div>
                 </article>
@@ -113,6 +129,7 @@
             else if (Request.IsAuthenticated && User.Identity.Name == ViewBag.UserName)
             {
                 <h4>Мое объявление</h4>
+                <input type="submit" value="Закрыть" class="btn btn-danger text-white border-white" ng-click="Close(@ViewBag.IdAd)" />
             }
             else
             {

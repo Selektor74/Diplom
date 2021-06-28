@@ -11,6 +11,8 @@
             $scope.ImagesList;
             $scope.IdFish = idViewBag;
 
+           
+
             $http({
                 method: 'GET',
                 url: '/Fishes/GetFishById/'+$scope.IdFish,
@@ -48,19 +50,20 @@
                                 <!-- Main Carousel -->
                                 <div id="main-carousel" class="carousel slide carousel-fade col-offset-2" >
                                     <div class="carousel-inner" role="listbox">
-                                        <div class="item active" >
+                                        
+                                        <div class="item active">
                                             <div class="slider-image">
                                                 <img style="height:500px" src="~/images/ForViews/Fishies/{{FishModel.Images[0].Name}}" alt="slider-1">
                                             </div>
                                         </div>
-                                        <div class="item" ng-if="FishModel.Images[1]!=null" >
+                                        <div class="item" ng-if="FishModel.Images[1]!=null">
                                             <div class="slider-image">
-                                                <img style="height:500px" src="~/images/ForViews/Fishies/{{FishModel.Images[1].Name}}"  alt="slider-1">
+                                                <img style="height:500px" src="~/images/ForViews/Fishies/{{FishModel.Images[1].Name}}" alt="slider-1">
                                             </div>
                                         </div>
-                                        <div class="item " ng-if="FishModel.Images[2]!=null" >
+                                        <div class="item " ng-if="FishModel.Images[2]!=null">
                                             <div class="slider-image">
-                                                <img style="height:500px" src="~/images/ForViews/Fishies/{{FishModel.Images[2].Name}}"  alt="slider-1">
+                                                <img style="height:500px" src="~/images/ForViews/Fishies/{{FishModel.Images[2].Name}}" alt="slider-1">
                                             </div>
                                         </div>
                                         <a class="left carousel-control" href="#main-carousel" role="button" data-slide="prev">

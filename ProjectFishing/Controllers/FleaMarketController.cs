@@ -13,6 +13,17 @@ namespace ProjectFishing.Controllers
     public class FleaMarketController : Controller
     {
         public static Context _db;
+
+        [HttpPost]
+        public ActionResult CloseAd(int Id)
+        {
+            _db = new Context();
+            var post = _db.Ads.Where(x => x.PostId == Id).FirstOrDefault();
+            post.Closed = true;
+            _db.SaveChanges();
+            return RedirectToAction("Index","Home");
+
+        }
         // GET: FleaMarket
         public ActionResult Index()
         {
@@ -40,7 +51,7 @@ namespace ProjectFishing.Controllers
 
             int pageSize = 10;
             int pageNumber = (Page ?? 1);
-            var model = _db.Ads.Where(x => x.UserId == Id).ToList();
+            var model = _db.Ads.Where(x => x.UserId == Id&&x.Closed==false).ToList();
             var AdsList = new List<ViewModel>();
             var AdsModel = new PostViewModel();
             foreach (Post item in model)
@@ -85,7 +96,7 @@ namespace ProjectFishing.Controllers
             _db = new Context();
             int pageSize = 10;
             int pageNumber = (Page ?? 1);
-            var model = _db.Ads.ToList();
+            var model = _db.Ads.Where(x => x.Closed == false).ToList();
             var AdsList = new List<ViewModel>();
             var AdsModel = new PostViewModel();
             foreach (Post item in model)
@@ -123,7 +134,7 @@ namespace ProjectFishing.Controllers
 
             int pageSize = 10;
             int pageNumber = (Page ?? 1);
-            var model = _db.Ads.ToList();
+            var model = _db.Ads.Where(x=>x.Closed==false).ToList();
             var AdsList = new List<ViewModel>();
             var AdsModel = new PostViewModel();
             foreach (Ad item in model)
@@ -193,6 +204,7 @@ namespace ProjectFishing.Controllers
             model.Date = DateTime.Today.ToShortDateString();
             model.PostCategory = 0;
             model.ViewCount = 0;
+            model.Closed = false;
             _db.Ads.Add(model);
             _db.SaveChanges();
             return RedirectToAction("Index", "Home");

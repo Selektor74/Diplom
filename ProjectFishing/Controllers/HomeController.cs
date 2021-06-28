@@ -15,7 +15,7 @@ namespace ProjectFishing.Controllers
     public class HomeController : Controller
     {
         public static Context _db = new Context();
-
+       
         [HttpGet]
         public ActionResult GetChats()
         {

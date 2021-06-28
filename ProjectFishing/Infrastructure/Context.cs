@@ -25,7 +25,7 @@ namespace ProjectFishing.Infrastructure
         public DbSet<News> News { get; set; }
         // public DbSet<Group> Groups { get; set; }
         public DbSet<Message> Messages { get; set; }
-
+       
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

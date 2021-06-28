@@ -16,7 +16,7 @@ namespace ProjectFishing.Models
         [DataType(DataType.PhoneNumber)]
         [Required]
         public string PhoneNumber { get; set; }
-
+        public bool Closed { get; set; }
 
         [DisplayName("Цена")]
         [Required]
