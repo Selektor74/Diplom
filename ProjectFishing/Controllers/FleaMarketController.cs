@@ -134,7 +134,7 @@ namespace ProjectFishing.Controllers
 
             int pageSize = 10;
             int pageNumber = (Page ?? 1);
-            var model = _db.Ads.Where(x=>x.Closed==false).ToList();
+            var model = _db.Ads.Where(x=>x.Closed==false&&x.CategoryId==Id).ToList();
             var AdsList = new List<ViewModel>();
             var AdsModel = new PostViewModel();
             foreach (Ad item in model)

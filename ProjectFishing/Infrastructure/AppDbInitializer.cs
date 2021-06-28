@@ -27,16 +27,6 @@ namespace ProjectFishing.Infrastructure
             roleManager.Create(role1);
             roleManager.Create(role2);
             roleManager.Create(role3);
-            var user = new ApplicationUser { UserName = "Nursik", Email = "dusanovn@bk.ru", Image = "Avatar.jpg" };
-            var result = userManager.Create(user, "Nursik123!");
-            // создаем пользователей
-            //string password = "1Pass!";
-            // если создание пользователя прошло успешно
-            if (result.Succeeded)
-            {
-                // добавляем для пользователя роль
-                userManager.AddToRole(user.Id, role1.Name);
-            }
 
             base.Seed(context);
         }
