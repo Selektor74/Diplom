@@ -11,7 +11,7 @@ using AuthorizeAttribute = System.Web.Mvc.AuthorizeAttribute;
 
 namespace ProjectFishing.Controllers
 {
-    
+  
     public class HomeController : Controller
     {
         public static Context _db = new Context();
