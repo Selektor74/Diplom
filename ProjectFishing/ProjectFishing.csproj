@@ -237,10 +237,13 @@
   </ItemGroup>
   <ItemGroup>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <Content Include="App_Data\DbFishing.mdf" />
     <Content Include="App_Data\DbFishing_log.ldf">
       <DependentUpon>DbFishing.mdf</DependentUpon>
     </Content>
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
     <Content Include="Content\bootstrap-theme.css" />
