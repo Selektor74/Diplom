@@ -210,9 +210,7 @@ namespace ProjectFishing.Controllers
                     _db.SaveChanges();
                     
                     model.Images.Add(img);
-                
                 }
-               
             }
             
             model.PostCategory = 1;

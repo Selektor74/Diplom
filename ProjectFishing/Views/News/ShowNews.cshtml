@@ -1,0 +1,88 @@
+﻿<script>
+    var myApp = angular.module('mainApp', []);
+    myApp.controller('mainController', function ($scope, $http) {
+        $scope.News = {
+            Date: '',
+            Images: [],
+            Title: '',
+            Text: '',
+            NewsId: '',
+            DataNumber: ''
+        };
+        download = function () {
+            $http({
+                method: 'GET',
+                url: '/News/GetNewsById/' + @ViewBag.Id,
+            })
+                .then(function succes(responce) {
+                    $scope.News = responce.data;
+                    console.log($scope.News);
+                    var firstWord = $scope.News.Date.replace(/ .*/, '');
+                    $scope.News.DataNumber = firstWord;
+                    var firstSpace = $scope.News.Date.indexOf(" ");
+                    var newStr = $scope.News.Date.slice(firstSpace);
+                    item.Date = newStr;
+                });
+        };
+        download();
+    });
+</script>
+<body ng-controller="mainController">
+    <main class="site-main page-spacing">
+        <div class="page-banner faq-banner container-fluid no-padding">
+            <div class="page-banner-content">
+                <div class="container">
+                    <h3>Recent Updates</h3>
+                    <p>You wanna be where you can see our troubles are all the same you wanna be where everybody knows Your name days are all share them with me oh baby are the voyages of the Starship Enterprise</p>
+                </div>
+            </div>
+            <div class="banner-content container-fluid no-padding">
+                <div class="container">
+                    <h4 class="pull-left">Новости</h4>
+                    <ol class="breadcrumb pull-right">
+                        <li><a href="#">Home</a></li>
+                        <li class="active">News</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div id="blog-section" class="blog-list container-fluid no-padding">
+            <div class="section-padding"></div>
+            <!-- Container -->
+            <div class="container">
+                <!-- Row -->
+                <div class="row">
+                    <!-- Content Area -->
+                    <div class="content-area content-area75 col-md-9 col-sm-8">
+                        <article class="type-post blog-onecolumn format-image">
+                            <div class="entry-cover">
+                                <a title="Cover"><img src="~/images/ForViews/News/{{News.Images[0].Name}}" alt="blog1"></a>
+                                <div class="entry-metaNews" style="padding: 15px; max-width: 170px; background-color: #eaeaea;">
+                                    <div class="post-date" style="font-size: 16px;height: 60px;line-height: 40px;width: 60px;">
+                                        <p><span>{{News.DataNumber}}</span>{{News.Date}}</p>
+                                    </div>
+                                    <div class="post-meta">
+                                        <div class="byline"><a href="#" title="Admin"><i class="fa fa-user"></i>{{News.UserName}}</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="entry-title">
+                                <h3>
+                                    <a href="" title="">
+                                        {{News.Title}}
+                                    </a>
+                                </h3>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="entry-gallerylist" ng-repeat="item in News.Images">
+                    <div class="col-md-3 col-sm-6 col-xs-6">
+                        <a href="~/images/ForViews/News/item.Name"><img src="~/images/ForViews/News/item.Name" alt="blog-thumb1"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+

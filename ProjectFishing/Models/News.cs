@@ -12,6 +12,7 @@ namespace ProjectFishing.Models
         public string Text { get; set; }
         public List<Image> Images { get; set; }
         public string Date { get; set; }
+        public string UserName { get; set; }
         public News()
         {
             Images = new List<Image>();

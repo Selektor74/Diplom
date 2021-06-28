@@ -236,10 +236,13 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< Updated upstream
     <Content Include="App_Data\DbFishing.mdf" />
     <Content Include="App_Data\DbFishing_log.ldf">
       <DependentUpon>DbFishing.mdf</DependentUpon>
     </Content>
+=======
+>>>>>>> Stashed changes
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -311,6 +314,10 @@
     <Content Include="images\ForViews\Manage\avatar.jpg" />
     <Content Include="images\ForViews\Manage\ImageUser3e5e64b3-5b8b-422b-8f0b-fa33fe677fdai.jpg.jpg" />
     <Content Include="images\ForViews\Manage\ImageUserc46c5d5e-7694-4d43-89f3-61747d97e306illustration-of-cute-racoon-avatar_79416-110.jpg.jpg" />
+    <Content Include="images\ForViews\News\2471511b-cb7d-436f-b53f-b314207b8402ImageNewsDR0gM53WAAExd3_.png.png" />
+    <Content Include="images\ForViews\News\40920bd0-b2b4-4428-8600-9a0536cba4afImageNews15e720ba248bbfc5b0fd6eefb3920fd7.png.png" />
+    <Content Include="images\ForViews\News\8fa02924-1a37-40c1-be2c-bcb1e3958580ImageNews1_OvvBGp3wfhzWuyeAKK9Hig.png.png" />
+    <Content Include="images\ForViews\News\f32ca853-5ecf-44b6-ad65-5e908d9ceeb2ImageNewspng-transparent-computer-icons-microsoft-visual-studio-visual-studio-code-ico-purple-angle-violet.png.png" />
     <Content Include="images\ftr-bg.jpg" />
     <Content Include="images\ftr-email.png" />
     <Content Include="images\ftr-hours.png" />
@@ -1354,12 +1361,13 @@
     <Content Include="Views\Shops\ShowShops.cshtml" />
     <Content Include="Views\News\AddNews.cshtml" />
     <Content Include="Views\Shops\ShowMoreInfoAboutShop.cshtml" />
+    <Content Include="Views\News\ShowNews.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="images\ForViews\Fishies\" />
     <Folder Include="images\ForViews\Forum\" />
     <Folder Include="images\ForViews\Lakes\" />
-    <Folder Include="images\ForViews\News\" />
     <Folder Include="images\ForViews\Shops\" />
   </ItemGroup>
   <ItemGroup>

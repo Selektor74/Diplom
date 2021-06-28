@@ -3,7 +3,14 @@
     myApp.controller('mainController', function ($scope, $http) {
         $scope.currentPage = 1;
         $scope.pageSize = 10;
-        $scope.News = [];
+        $scope.News = {
+            Date: '',
+            Images: [],
+            Title: '',
+            Text: '',
+            NewsId: '',
+            DataNumber: ''
+        };
         download = function (num) {
             $scope.currentPage = num;
             console.log(num);
@@ -13,6 +20,13 @@
             })
                 .then(function succes(responce) {
                     $scope.News = responce.data;
+                    $scope.News.News.forEach(function (item) {
+                        var firstWord = item.Date.replace(/ .*/, '');
+                        item.DataNumber = firstWord;
+                        var firstSpace = item.Date.indexOf(" ");
+                        var newStr = item.Date.slice(firstSpace);
+                        item.Date = newStr;
+                    });
                     console.log($scope.News);
                 });
         };
@@ -26,28 +40,72 @@
 <head>
     <script src="https://rawgit.com/michaelbromley/angularUtils-pagination/master/dirPagination.js"></script>
 </head>
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8" ng-controller="mainController">
-                <div>
-                    <h1>Tasty Paginated Menu</h1>
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <ul>
-                                <li dir-paginate="item in News.News | itemsPerPage: pageSize" total-items="News.TotalDishesCount" current-page="currentPage">
-                                    {{ item.Title }}
-                                </li>
-                            </ul>
+<body ng-controller="mainController">
+    <main class="site-main page-spacing">
+        <div class="page-banner faq-banner container-fluid no-padding">
+            <div class="page-banner-content">
+                <div class="container">
+                    <h3>Recent Updates</h3>
+                    <p>You wanna be where you can see our troubles are all the same you wanna be where everybody knows Your name days are all share them with me oh baby are the voyages of the Starship Enterprise</p>
+                </div>
+            </div>
+            <div class="banner-content container-fluid no-padding">
+                <div class="container">
+                    <h4 class="pull-left">Blog Posts</h4>
+                    <ol class="breadcrumb pull-right">
+                        <li><a href="#">Home</a></li>
+                        <li class="active">Latest News</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blog Section -->
+        <div id="blog-section" class="blog-list container-fluid no-padding">
+            <div class="section-padding"></div>
+            <!-- Container -->
+            <div class="container">
+                <!-- Row -->
+                <div class="row">
+                    <!-- Content Area -->
+                    <div class="content-area content-area75 col-md-9 col-sm-8">
+                        <div class="forum-link" dir-paginate="item in News.News | itemsPerPage: pageSize" total-items="News.TotalDishesCount" current-page="currentPage">
+                            <article class="type-post blog-onecolumn format-image">
+                                <div class="entry-cover">
+                                    <a title="Cover"><img src="~/images/ForViews/News/{{item.Images[0].Name}}" alt="blog1"></a>
+                                    <div class="entry-metaNews" style="padding: 15px; max-width: 170px; background-color: #eaeaea;">
+                                        <div class="post-date" style="font-size: 16px;height: 60px;line-height: 40px;width: 60px;">
+                                            <p><span>{{item.DataNumber}}</span>{{item.Date}}</p>
+                                        </div>
+                                        <div class="post-meta">
+                                            <div class="byline"><a href="#" title="Admin"><i class="fa fa-user"></i>{{item.UserName}}</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="entry-title">
+                                    <h3>
+                                        <a href="/News/ShowNews/{{item.NewsId}}" title="{{item.Title}}">
+                                            {{item.Title}}
+                                        </a>
+                                    </h3>
+                                </div>
+                            </article>
                         </div>
+
                     </div>
                 </div>
-                <div>
-                    <div class="text-center">
-                        <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)"></dir-pagination-controls>
+            </div>
+            <div class="content-padding">
+                <div class="forum-description">
+                    <div>
+                        <div class="text-center">
+                            <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" auto-hide="false">
+
+                            </dir-pagination-controls>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 </body>

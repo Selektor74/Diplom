@@ -1627,6 +1627,17 @@ _:-ms-fullscreen, :root .gear-section::after {
     width: 100%;
     z-index: 2;
 }
+.entry-metaNews {
+    bottom: 0;
+    display: inline-block;
+    left: 0;
+    max-width: 192px;
+    padding: 25px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
 .entry-meta::before {
     background-color: #ffffff;
     bottom: 0;
@@ -1665,7 +1676,7 @@ _:-ms-fullscreen, :root .gear-section::after {
     position: absolute;
     text-align: center;
     top: 0;
-    width:auto;
+    width:60px;
 }
 .post-meta div {
 	position: relative;
@@ -2773,7 +2784,10 @@ _:-ms-fullscreen, :root .gear-section::after {
 		padding: 15px;
 		max-width: 170px;
 	}
-	
+    .entry-metaNews {
+        padding: 15px;
+        max-width: 170px;
+    }
 	/* -- Blog Post */
 	.entry-gallerylist a {
 		display: block;
@@ -2823,10 +2837,7 @@ _:-ms-fullscreen, :root .gear-section::after {
 		padding-left: 50px;
 	}
 	.post-date p span {
-		font-size: 16px;
-		height: 40px;
-		line-height: 40px;
-		width: 40px;
+		.post-date p span
 	}
 	.post-meta div {
 		margin-top: 10px;
